@@ -1,0 +1,95 @@
+<html>
+<style>
+    /*Took Reference From StackOverFlow*/
+    table.blueTable {
+        border: 1px solid #1C6EA4;
+        background-color: #EEEEEE;
+        width: 100%;
+        text-align: left;
+        border-collapse: collapse;
+    }
+    table.blueTable td, table.blueTable th {
+        border: 1px solid #AAAAAA;
+        padding: 3px 2px;
+    }
+    table.blueTable tbody td {
+        font-size: 13px;
+    }
+    table.blueTable tr:nth-child(even) {
+        background: #D0E4F5;
+    }
+    table.blueTable thead {
+        background: #1C6EA4;
+        background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+        background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+        background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+        border-bottom: 2px solid #444444;
+    }
+    table.blueTable thead th {
+        font-size: 15px;
+        font-weight: bold;
+        color: #FFFFFF;
+        border-left: 2px solid #D0E4F5;
+    }
+    table.blueTable thead th:first-child {
+        border-left: none;
+    }
+
+    table.blueTable tfoot {
+        font-size: 14px;
+        font-weight: bold;
+        color: #FFFFFF;
+        background: #D0E4F5;
+        background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+        background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+        background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+        border-top: 2px solid #444444;
+    }
+    table.blueTable tfoot td {
+        font-size: 14px;
+    }
+    table.blueTable tfoot .links {
+        text-align: right;
+    }
+    table.blueTable tfoot .links a{
+        display: inline-block;
+        background: #1C6EA4;
+        color: #FFFFFF;
+        padding: 2px 8px;
+        border-radius: 5px;
+    }
+</style>
+<main id="delete">
+    <font size="8" color="green">Final test lab</font><br><br>
+    Number of rows: <input type="text" id="t1" /><br><br>
+    Number of cols: <input type="text" id="t2" /><br><br>
+    <button id="b1" onclick="generateTable()">Generate Table</button><br><br>
+</main>
+<button id="b2" onclick="addColumn()">Add Column</button>
+<button id="b3" onclick="addRow()">Add Row</button>
+<br><br>
+<table id="table" class="blueTable"></table>
+<script language="javascript">
+    function generateTable(){
+        let userRow = document.getElementById("t1").value
+        let userColumn = document.getElementById("t2").value
+        let table = document.getElementById("table")
+        for (let i = 0; i < userRow; i++) {
+            let row = table.insertRow();
+            for (let j = 0; j < userColumn; j++) {
+                let cell = row.insertCell()
+                cell.innerHTML = "<strong>Cell</strong>"
+            }
+        }
+        document.getElementById("delete").remove()
+    }
+    function addRow(){
+        let cell = document.getElementById("table").insertRow(document.getElementById("table").rows.length).insertCell(0)
+        cell.innerHTML = "<strong>Cell</strong>"
+    }
+    function addColumn(){
+        let cell = document.getElementById("table").rows[document.getElementById("table").rows.length - 1].insertCell();
+        cell.innerHTML = "<strong>Cell</strong>";
+    }
+</script>
+</html>
